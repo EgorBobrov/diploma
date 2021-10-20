@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen"/>
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+        <link href="../../static/css/main.css"
+              th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+        <div class="container">
+            <div th:fragment="header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#" th:href="@{/}">На главную</a>
+                            <ul class="nav navbar-nav">
+                                <li><a href="#" th:href="@{/clients}">Клиенты</a></li>
+                                <li><a href="#" th:href="@{/client/new}">Добавить Клиента</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="jumbotron">
+                    <div class="row text-center">
+                        <div class="">
+                            <h2>ООО "ЭПАМ Систэмз"</h2>
+                            <h3>Система автоматизированнного документооборота</h3>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <img src="../../static/images/logo_white-blue.svg" width="400"
+                             th:src="@{/images/logo_white-blue.svg}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

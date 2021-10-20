@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Клиенты</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(clients)}">
+        <h2>Список Клиентов</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Наименование</th>
+                <th>Веб-сайт</th>
+                <th>Описание</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id}"><a href="/client/${client.id}">Id</a></td>
+                <td th:text="${client.clientName}">Наименование</td>
+                <td th:text="${client.clientWebsiteUrl}">Вебсайт</td>
+                <td th:text="${client.clientDescription}">Описание</td>
+                <td><a th:href="${'/client/' + client.id}">Просмотр</a></td>
+                <td><a th:href="${'/client/edit/' + client.id}">Редактирование</a></td>
+                <td><a th:href="${'/client/delete/' + client.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
