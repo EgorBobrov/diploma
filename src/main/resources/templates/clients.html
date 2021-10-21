@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head lang="en">
 
     <title>Клиенты</title>
@@ -17,18 +17,21 @@
                 <th>Наименование</th>
                 <th>Веб-сайт</th>
                 <th>Описание</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th sec:authorize="hasAnyAuthority('USER','ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Редактировать</th>
+                <th sec:authorize="hasAuthority('ADMIN')">Удалить</th>
             </tr>
             <tr th:each="client : ${clients}">
                 <td th:text="${client.id}"><a href="/client/${client.id}">Id</a></td>
                 <td th:text="${client.clientName}">Наименование</td>
                 <td th:text="${client.clientWebsiteUrl}">Вебсайт</td>
                 <td th:text="${client.clientDescription}">Описание</td>
-                <td><a th:href="${'/client/' + client.id}">Просмотр</a></td>
-                <td><a th:href="${'/client/edit/' + client.id}">Редактирование</a></td>
-                <td><a th:href="${'/client/delete/' + client.id}">Удаление</a></td>
+                <td sec:authorize="hasAnyAuthority('USER','ADMIN')">
+                    <a th:href="${'/client/' + client.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="${'/client/edit/' + client.id}">Редактирование</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="${'/client/delete/' + client.id}">Удаление</a></td>
             </tr>
         </table>
 

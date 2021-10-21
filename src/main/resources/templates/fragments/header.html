@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head lang="en">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -19,7 +19,8 @@
                             <a class="navbar-brand" href="#" th:href="@{/}">На главную</a>
                             <ul class="nav navbar-nav">
                                 <li><a href="#" th:href="@{/clients}">Клиенты</a></li>
-                                <li><a href="#" th:href="@{/client/new}">Добавить Клиента</a></li>
+                                <li><a href="#" th:href="@{/client/new}" sec:authorize="hasAuthority('ADMIN')">
+                                    Добавить Клиента</a></li>
                             </ul>
                         </div>
                     </div>
