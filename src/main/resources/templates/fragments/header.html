@@ -13,39 +13,44 @@
     <body>
         <div class="container">
             <div th:fragment="header">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#" th:href="@{/}">На главную</a>
-                            <ul class="nav navbar-nav">
-                                <li><a href="#" th:href="@{/clients}">Клиенты</a></li>
-                                <li><a href="#" th:href="@{/client/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
-                                    Добавить Клиента</a></li>
-                            </ul>
-                        </div>
-                        <div class="container">
-                            <div sec:authorize="isAuthenticated()">
-                                <form id="logoutForm" method="POST" th:action="@{/logout}">
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                </form>
 
-                                <h2>Welcome <span sec:authentication="name"></span> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
-                            </div>
-                        </div>
-
-                    </div>
-                </nav>
                 <div class="jumbotron">
+                    <div class="row text-center">
+                        <img src="../../static/images/logo_white-blue.svg" width="400"
+                             th:src="@{/images/logo_white-blue.svg}"/>
+                    </div>
+
                     <div class="row text-center">
                         <div class="">
                             <h2>ООО "ЭПАМ Систэмз"</h2>
                             <h3>Система автоматизированнного документооборота</h3>
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <img src="../../static/images/logo_white-blue.svg" width="400"
-                             th:src="@{/images/logo_white-blue.svg}"/>
-                    </div>
+
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <div class="container">
+                                    <div sec:authorize="isAuthenticated()">
+                                        <h3>Добро пожаловать, <span sec:authentication="name"></span></h3>
+                                    </div>
+                                </div>
+
+                                <a class="navbar-brand" href="#" th:href="@{/}">На главную</a>
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#" th:href="@{/clients}">Клиенты</a></li>
+                                    <li><a href="#" th:href="@{/client/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
+                                        Добавить Клиента</a></li>
+                                    <li sec:authorize="isAuthenticated()">
+                                        <form id="logoutForm" method="POST" th:action="@{/logout}">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <a onclick="document.forms['logoutForm'].submit()">Выход</a>
+                                        </form></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
