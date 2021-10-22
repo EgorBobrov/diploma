@@ -3,29 +3,27 @@ package com.egobob.diploma.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "role")
 public class Role extends AbstractDomainClass {
 
-    private String role;
+    private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users = new ArrayList<>();
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
     public void addUser(User user){

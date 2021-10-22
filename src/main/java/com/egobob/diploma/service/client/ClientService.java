@@ -1,4 +1,4 @@
-package com.egobob.diploma.service;
+package com.egobob.diploma.service.client;
 
 import com.egobob.diploma.domain.Client;
 

@@ -1,32 +1,32 @@
-package com.egobob.diploma.service;
+package com.egobob.diploma.service.security;
 
+import com.egobob.diploma.domain.Role;
 import com.egobob.diploma.domain.User;
+import com.egobob.diploma.repository.RoleRepository;
 import com.egobob.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private EncryptionService encryptionService;
-
     @Autowired
-    public UserServiceImpl(UserRepository userRepository,
-                           EncryptionService encryptionService) {
-        this.userRepository = userRepository;
-        this.encryptionService = encryptionService;
-    }
+    private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<?> listAll() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+        return userRepository.findAll();
     }
 
     @Override
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveOrUpdate(User domainObject) {
         if(domainObject.getPassword() != null){
-            domainObject.setEncryptedPassword(encryptionService.
-                    encryptString(domainObject.getPassword()));
+            domainObject.setPassword(bCryptPasswordEncoder.
+                    encode(domainObject.getPassword()));
         }
         return userRepository.save(domainObject);
     }
@@ -52,6 +52,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void save(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRoles(Set.of(roleRepository.findByName("ROLE_USER")));
+        userRepository.save(user);
     }
 
 }

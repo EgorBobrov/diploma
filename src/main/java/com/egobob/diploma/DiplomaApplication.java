@@ -2,8 +2,8 @@ package com.egobob.diploma;
 
 import com.egobob.diploma.domain.Role;
 import com.egobob.diploma.domain.User;
-import com.egobob.diploma.service.RoleService;
-import com.egobob.diploma.service.UserService;
+import com.egobob.diploma.service.security.RoleService;
+import com.egobob.diploma.service.security.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -40,11 +40,11 @@ public class DiplomaApplication {
 
 	private static void loadRoles(RoleService roleService) {
 		Role role = new Role();
-		role.setRole("USER");
+		role.setName("USER");
 		roleService.saveOrUpdate(role);
 
 		Role adminRole = new Role();
-		adminRole.setRole("ADMIN");
+		adminRole.setName("ADMIN");
 		roleService.saveOrUpdate(adminRole);
 	}
 
@@ -53,7 +53,7 @@ public class DiplomaApplication {
 		List<Role> roles = (List<Role>) roleService.listAll();
 		List<User> users = (List<User>) userService.listAll();
 		roles.forEach(role -> {
-			if (role.getRole().equalsIgnoreCase("USER")) {
+			if (role.getName().equalsIgnoreCase("USER")) {
 				users.forEach(user -> {
 					if (user.getUsername().equals("user")) {
 						user.addRole(role);
@@ -68,7 +68,7 @@ public class DiplomaApplication {
 		List<Role> roles = (List<Role>) roleService.listAll();
 		List<User> users = (List<User>) userService.listAll();
 		roles.forEach(role -> {
-			if (role.getRole().equalsIgnoreCase("ADMIN")) {
+			if (role.getName().equalsIgnoreCase("ADMIN")) {
 				users.forEach(user -> {
 					if (user.getUsername().equals("admin")) {
 						user.addRole(role);

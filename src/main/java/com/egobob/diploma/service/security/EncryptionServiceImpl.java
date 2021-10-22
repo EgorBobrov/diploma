@@ -1,4 +1,4 @@
-package com.egobob.diploma.service;
+package com.egobob.diploma.service.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

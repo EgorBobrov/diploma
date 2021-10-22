@@ -1,4 +1,4 @@
-package com.egobob.diploma.service;
+package com.egobob.diploma.service.security;
 
 public interface EncryptionService {
     String encryptString(String input);
