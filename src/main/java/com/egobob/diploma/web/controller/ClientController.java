@@ -24,31 +24,31 @@ public class ClientController {
 
     @PostMapping("client")
     public String saveClient(Client client){
-        clientService.saveClient(client);
+        clientService.saveOrUpdate(client);
         return "redirect:/client/" + client.getId();
     }
 
     @RequestMapping("client/{id}")
     public String showClient(@PathVariable Long id, Model model){
-        model.addAttribute("client", clientService.getClientById(id));
+        model.addAttribute("client", clientService.getById(id));
         return "client_show";
     }
 
     @GetMapping(value = "/clients")
     public String list(Model model){
-        model.addAttribute("clients", clientService.listAllClients());
+        model.addAttribute("clients", clientService.listAll());
         return "clients";
     }
 
     @RequestMapping("client/edit/{id}")
     public String edit(@PathVariable Long id, Model model){
-        model.addAttribute("client", clientService.getClientById(id));
+        model.addAttribute("client", clientService.getById(id));
         return "client_form";
     }
 
     @RequestMapping("client/delete/{id}")
     public String delete(@PathVariable Long id){
-        clientService.deleteClient(id);
+        clientService.delete(id);
         return "redirect:/clients";
     }
 

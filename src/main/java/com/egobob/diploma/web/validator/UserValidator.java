@@ -1,4 +1,4 @@
-package com.egobob.diploma.web;
+package com.egobob.diploma.web.validator;
 
 import com.egobob.diploma.domain.User;
 import com.egobob.diploma.service.security.UserService;

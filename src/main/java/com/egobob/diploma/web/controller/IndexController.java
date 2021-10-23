@@ -1,7 +1,6 @@
 package com.egobob.diploma.web.controller;
 
 import com.egobob.diploma.service.security.SecurityService;
-import com.egobob.diploma.web.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

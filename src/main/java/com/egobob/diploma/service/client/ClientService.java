@@ -1,13 +1,7 @@
 package com.egobob.diploma.service.client;
 
 import com.egobob.diploma.domain.Client;
+import com.egobob.diploma.service.BaseCrudService;
 
-public interface ClientService { // TODO: refactor to extend base CRUD service
-    Client saveClient(Client client);
-
-    Client getClientById(Long id);
-
-    Iterable<Client> listAllClients();
-
-    void deleteClient(Long id);
+public interface ClientService extends BaseCrudService<Client> {
 }
