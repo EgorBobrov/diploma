@@ -13,9 +13,6 @@ public class IndexController {
     @Autowired
     private SecurityService securityService;
 
-    @Autowired
-    private UserValidator userValidator;
-
     @RequestMapping({"/", "/welcome"})
     String index(Model model) {
         return "index";
@@ -28,10 +25,10 @@ public class IndexController {
         }
 
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "Неверное имя пользователя или пароль.");
 
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+            model.addAttribute("message", "Вы успешно вышли из своего аккаунта.");
 
         return "login";
     }
