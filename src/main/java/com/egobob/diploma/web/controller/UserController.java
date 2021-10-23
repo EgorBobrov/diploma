@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import static com.egobob.diploma.web.controller.ControllerUtils.*;
+
 @Controller
 public class UserController {
 
@@ -26,13 +28,13 @@ public class UserController {
     @GetMapping(value = "/users")
     public String listUsers(Model model){
         model.addAttribute("users", userService.listAll());
-        return "users";
+        return USERS_VIEW;
     }
 
     @RequestMapping("user/new")
     public String newUser(Model model){
         model.addAttribute("user", new User());
-        return "user_form";
+        return USER_FORM_VIEW;
     }
 
     @PostMapping("user")
@@ -42,7 +44,7 @@ public class UserController {
         userValidator.validate(user, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "user_form";
+            return USER_FORM_VIEW;
         }
 
         userService.save(user);
@@ -53,7 +55,7 @@ public class UserController {
     @RequestMapping("user/{id}")
     public String showUser(@PathVariable Long id, Model model){
         model.addAttribute("user", userService.getById(id));
-        return "user_show";
+        return USER_SHOW_VIEW;
     }
 
     @RequestMapping("user/delete/{id}")
