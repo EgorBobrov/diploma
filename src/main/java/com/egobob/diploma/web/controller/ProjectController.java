@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 import static com.egobob.diploma.web.controller.ControllerUtils.*;
 
 @Controller
@@ -47,6 +49,13 @@ public class ProjectController implements BaseEntityController<Project> {
     public String list(Model model) {
         model.addAttribute("clients", clientService.listAll());
         model.addAttribute("projects", projectService.listAll());
+        return PROJECTS_VIEW;
+    }
+
+    @GetMapping(value = "/projects/{clientId}")
+    public String listProjectsByClientId(@PathVariable Long clientId, Model model) {
+        model.addAttribute("clients", List.of(clientService.getById(clientId)));
+        model.addAttribute("projects", projectService.listAllByClientId(clientId));
         return PROJECTS_VIEW;
     }
 

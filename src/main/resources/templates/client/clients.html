@@ -17,6 +17,7 @@
                 <th>Наименование</th>
                 <th>Веб-сайт</th>
                 <th>Описание</th>
+                <th>Проекты</th>
                 <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
                 <th sec:authorize="hasAuthority('ROLE_ADMIN')">Редактировать</th>
                 <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
@@ -26,6 +27,8 @@
                 <td th:text="${client.clientName}">Наименование</td>
                 <td th:text="${client.clientWebsiteUrl}">Вебсайт</td>
                 <td th:text="${client.clientDescription}">Описание</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/projects/' + client.id}">Проекты</a></td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/client/' + client.id}">Просмотр</a></td>
                 <td sec:authorize="hasAuthority('ROLE_ADMIN')">

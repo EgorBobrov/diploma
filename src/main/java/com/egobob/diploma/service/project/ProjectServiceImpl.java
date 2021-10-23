@@ -32,4 +32,9 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(Long id) {
         projectRepository.deleteById(id);
     }
+
+    @Override
+    public List<?> listAllByClientId(Long clientId) {
+        return projectRepository.findByClientId(clientId);
+    }
 }
