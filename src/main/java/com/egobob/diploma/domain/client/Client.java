@@ -1,18 +1,20 @@
 package com.egobob.diploma.domain.client;
 
+import com.egobob.diploma.domain.AbstractDomainClass;
 import com.egobob.diploma.domain.project.Project;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Version
-    private Long version;
+@Getter
+@Setter
+@NoArgsConstructor
+public class Client extends AbstractDomainClass {
 
     private String clientName;
     private String clientWebsiteUrl;
@@ -22,44 +24,4 @@ public class Client {
     private Collection<Project> projects;
     // TODO: maybe add client company logo or something
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public String getClientWebsiteUrl() {
-        return clientWebsiteUrl;
-    }
-
-    public void setClientWebsiteUrl(String clientWebsiteUrl) {
-        this.clientWebsiteUrl = clientWebsiteUrl;
-    }
-
-    public String getClientDescription() {
-        return clientDescription;
-    }
-
-    public void setClientDescription(String clientDescription) {
-        this.clientDescription = clientDescription;
-    }
 }

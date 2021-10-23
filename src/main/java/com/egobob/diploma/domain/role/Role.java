@@ -2,11 +2,18 @@ package com.egobob.diploma.domain.role;
 
 import com.egobob.diploma.domain.AbstractDomainClass;
 import com.egobob.diploma.domain.user.User;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "role")
 public class Role extends AbstractDomainClass {
 
@@ -15,18 +22,6 @@ public class Role extends AbstractDomainClass {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Set<User> getUsers() {
-        return users;
-    }
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
     public void addUser(User user){
         if(!this.users.contains(user)){
             this.users.add(user);
