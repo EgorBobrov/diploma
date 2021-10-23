@@ -1,4 +1,7 @@
-package com.egobob.diploma.domain;
+package com.egobob.diploma.domain.user;
+
+import com.egobob.diploma.domain.AbstractDomainClass;
+import com.egobob.diploma.domain.role.Role;
 
 import javax.persistence.*;
 import java.util.Set;

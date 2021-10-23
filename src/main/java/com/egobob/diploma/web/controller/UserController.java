@@ -1,6 +1,6 @@
 package com.egobob.diploma.web.controller;
 
-import com.egobob.diploma.domain.User;
+import com.egobob.diploma.domain.user.User;
 import com.egobob.diploma.service.security.SecurityService;
 import com.egobob.diploma.service.user.UserService;
 import com.egobob.diploma.web.validator.UserValidator;

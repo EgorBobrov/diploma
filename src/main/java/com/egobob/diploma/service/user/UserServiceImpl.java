@@ -1,6 +1,6 @@
 package com.egobob.diploma.service.user;
 
-import com.egobob.diploma.domain.User;
+import com.egobob.diploma.domain.user.User;
 import com.egobob.diploma.repository.RoleRepository;
 import com.egobob.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

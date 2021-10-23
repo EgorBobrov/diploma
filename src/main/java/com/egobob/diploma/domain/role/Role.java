@@ -1,8 +1,9 @@
-package com.egobob.diploma.domain;
+package com.egobob.diploma.domain.role;
+
+import com.egobob.diploma.domain.AbstractDomainClass;
+import com.egobob.diploma.domain.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity

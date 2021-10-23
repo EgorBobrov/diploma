@@ -1,7 +1,7 @@
 package com.egobob.diploma.service.security;
 
-import com.egobob.diploma.domain.Role;
-import com.egobob.diploma.domain.User;
+import com.egobob.diploma.domain.role.Role;
+import com.egobob.diploma.domain.user.User;
 import com.egobob.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

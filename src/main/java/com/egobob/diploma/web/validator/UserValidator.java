@@ -1,6 +1,6 @@
 package com.egobob.diploma.web.validator;
 
-import com.egobob.diploma.domain.User;
+import com.egobob.diploma.domain.user.User;
 import com.egobob.diploma.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

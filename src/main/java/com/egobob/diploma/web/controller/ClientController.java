@@ -1,6 +1,6 @@
 package com.egobob.diploma.web.controller;
 
-import com.egobob.diploma.domain.Client;
+import com.egobob.diploma.domain.client.Client;
 import com.egobob.diploma.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

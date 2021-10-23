@@ -1,6 +1,6 @@
 package com.egobob.diploma.service.role;
 
-import com.egobob.diploma.domain.Role;
+import com.egobob.diploma.domain.role.Role;
 import com.egobob.diploma.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

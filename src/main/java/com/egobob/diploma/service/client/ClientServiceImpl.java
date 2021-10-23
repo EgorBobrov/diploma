@@ -1,6 +1,6 @@
 package com.egobob.diploma.service.client;
 
-import com.egobob.diploma.domain.Client;
+import com.egobob.diploma.domain.client.Client;
 import com.egobob.diploma.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 

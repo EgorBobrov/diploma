@@ -1,4 +1,6 @@
-package com.egobob.diploma.domain;
+package com.egobob.diploma.domain.client;
+
+import com.egobob.diploma.domain.project.Project;
 
 import javax.persistence.*;
 import java.util.Collection;
