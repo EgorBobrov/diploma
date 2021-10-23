@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Проект</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Информация о Проекте</h2>
+    <div th:if="${not #lists.isEmpty(clients)}">
+    <div>
+        <form class="form-horizontal" th:object="${project}" th:action="@{/project}" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Название:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Описание:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{description}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="status">Статус:</label>
+                <select id="status" th:field="*{projectStatus}">
+                    <option th:each="status : ${T(com.egobob.diploma.domain.project.ProjectStatus).values()}"
+                            th:value="${status}" th:text="${status.value}"
+                            th:selected="${status==ONGOING}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="client">Клиент:</label>
+                <select id="client" th:field="*{client}">
+                    <option th:each="client : ${clients}"
+                            th:value="${client.id}" th:text="${client.clientName}">
+                    </option>
+                </select>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Ввод</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div th:if="${#lists.isEmpty(clients)}">
+        <h3>Невозможно создать проект, если не существует ни одного клиента.</h3>
+    </div>
+</div>
+
+</body>
+</html>

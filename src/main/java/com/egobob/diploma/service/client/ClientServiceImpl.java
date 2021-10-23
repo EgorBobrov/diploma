@@ -2,18 +2,16 @@ package com.egobob.diploma.service.client;
 
 import com.egobob.diploma.domain.client.Client;
 import com.egobob.diploma.repository.ClientRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
-    private ClientRepository clientRepository;
-
-    public ClientServiceImpl(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
+    private final ClientRepository clientRepository;
 
     @Override
     public Client saveOrUpdate(Client client) {
@@ -22,7 +20,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client getById(Long id) {
-        return clientRepository.findById(id).orElseThrow();
+        return clientRepository.getById(id);
     }
 
     @Override
@@ -33,5 +31,16 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void delete(Long id) {
         clientRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Client findByClientName(String name) {
+        return clientRepository.findByClientName(name);
+    }
+
+    @Override
+    public void save(Client client) {
+        clientRepository.save(client);
     }
 }

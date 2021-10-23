@@ -1,11 +1,15 @@
 package com.egobob.diploma.domain;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class AbstractDomainClass implements DomainObject {
 
@@ -20,27 +24,6 @@ public class AbstractDomainClass implements DomainObject {
     private Date dateCreated;
 
     private Date lastUpdated;
-
-    @Override
-    public Long getId() {
-        return this.id;
-    }
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public Long getVersion() {
-        return version;
-    }
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
 
     @PreUpdate
     @PrePersist

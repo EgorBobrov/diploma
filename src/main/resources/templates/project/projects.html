@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Проекты</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(projects)}">
+        <h2>Список Проектов</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Статус</th>
+                <th>Клиент</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Редактировать</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
+            </tr>
+            <tr th:each="project : ${projects}">
+                <td th:text="${project.id}"><a href="/project/${project.id}">Id</a></td>
+                <td th:text="${project.name}">Название</td>
+                <td th:text="${project.description}">Описание</td>
+                <td th:text="${project.projectStatus.value}">Статус</td>
+                <td th:text="${project.client.clientName}"><a th:href="${'/client/' + project.client.id}">Клиент</a></td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/project/' + project.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/project/edit/' + project.id}">Редактирование</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/project/delete/' + project.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

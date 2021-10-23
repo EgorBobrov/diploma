@@ -49,7 +49,7 @@ public class UserController {
 
         userService.save(user);
 
-        return "redirect:/user/" + userService.findByUsername(user.getUsername()).getId();
+        return "redirect:/user/" + user.getId();
     }
 
     @RequestMapping("user/{id}")

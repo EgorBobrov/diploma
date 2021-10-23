@@ -2,7 +2,6 @@ package com.egobob.diploma.domain.client;
 
 import com.egobob.diploma.domain.AbstractDomainClass;
 import com.egobob.diploma.domain.project.Project;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +10,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "client")
 @Getter
 @Setter
 @NoArgsConstructor

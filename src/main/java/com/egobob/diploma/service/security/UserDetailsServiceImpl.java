@@ -3,6 +3,7 @@ package com.egobob.diploma.service.security;
 import com.egobob.diploma.domain.role.Role;
 import com.egobob.diploma.domain.user.User;
 import com.egobob.diploma.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,10 +19,10 @@ import java.util.Set;
 
 @Service
 @Qualifier("userDetailsService")
+@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     @Transactional(readOnly = true)

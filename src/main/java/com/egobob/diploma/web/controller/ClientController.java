@@ -13,41 +13,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import static com.egobob.diploma.web.controller.ControllerUtils.*;
 
 @Controller
-public class ClientController {
+public class ClientController implements BaseEntityController<Client> {
 
     @Autowired
     private ClientService clientService;
 
+    @Override
     @RequestMapping("client/new")
-    public String newClient(Model model){
+    public String newEntity(Model model){
         model.addAttribute("client", new Client());
         return CLIENT_FORM_VIEW;
     }
 
+    @Override
     @PostMapping("client")
-    public String saveClient(Client client){
-        clientService.saveOrUpdate(client);
+    public String saveEntity(Client client){
+        clientService.save(client);
         return "redirect:/client/" + client.getId();
     }
 
+    @Override
     @RequestMapping("client/{id}")
-    public String showClient(@PathVariable Long id, Model model){
+    public String showEntity(@PathVariable Long id, Model model){
         model.addAttribute("client", clientService.getById(id));
         return CLIENT_SHOW_VIEW;
     }
 
+    @Override
     @GetMapping(value = "/clients")
     public String list(Model model){
         model.addAttribute("clients", clientService.listAll());
         return CLIENTS_VIEW;
     }
 
+    @Override
     @RequestMapping("client/edit/{id}")
     public String edit(@PathVariable Long id, Model model){
         model.addAttribute("client", clientService.getById(id));
         return CLIENT_FORM_VIEW;
     }
 
+    @Override
     @RequestMapping("client/delete/{id}")
     public String delete(@PathVariable Long id){
         clientService.delete(id);
