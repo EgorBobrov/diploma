@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
 
     @Autowired
-    private ClientService clientService;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -72,42 +69,6 @@ public class IndexController {
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmedPassword());
 
         return "redirect:/welcome";
-    }
-
-    @RequestMapping("client/new")
-    public String newClient(Model model){
-        model.addAttribute("client", new Client());
-        return "client_form";
-    }
-
-    @PostMapping("client")
-    public String saveClient(Client client){
-        clientService.saveClient(client);
-        return "redirect:/client/" + client.getId();
-    }
-
-    @RequestMapping("client/{id}")
-    public String showClient(@PathVariable Long id, Model model){
-        model.addAttribute("client", clientService.getClientById(id));
-        return "client_show";
-    }
-
-    @GetMapping(value = "/clients")
-    public String list(Model model){
-        model.addAttribute("clients", clientService.listAllClients());
-        return "clients";
-    }
-
-    @RequestMapping("client/edit/{id}")
-    public String edit(@PathVariable Long id, Model model){
-        model.addAttribute("client", clientService.getClientById(id));
-        return "client_form";
-    }
-
-    @RequestMapping("client/delete/{id}")
-    public String delete(@PathVariable Long id){
-        clientService.deleteClient(id);
-        return "redirect:/products";
     }
 
 }
