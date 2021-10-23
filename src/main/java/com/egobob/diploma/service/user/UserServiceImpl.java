@@ -1,6 +1,5 @@
-package com.egobob.diploma.service.security;
+package com.egobob.diploma.service.user;
 
-import com.egobob.diploma.domain.Role;
 import com.egobob.diploma.domain.User;
 import com.egobob.diploma.repository.RoleRepository;
 import com.egobob.diploma.repository.UserRepository;
@@ -9,8 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 

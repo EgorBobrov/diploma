@@ -1,4 +1,4 @@
-package com.egobob.diploma.service.security;
+package com.egobob.diploma.service.role;
 
 import com.egobob.diploma.domain.Role;
 import com.egobob.diploma.repository.RoleRepository;
