@@ -28,7 +28,7 @@ public class ClientController implements BaseEntityController<Client> {
     @Override
     @PostMapping("client")
     public String saveEntity(Client client){
-        clientService.save(client);
+        clientService.saveOrUpdate(client);
         return "redirect:/client/" + client.getId();
     }
 

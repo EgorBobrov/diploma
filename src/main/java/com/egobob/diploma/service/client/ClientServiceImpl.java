@@ -33,14 +33,4 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.deleteById(id);
     }
 
-
-    @Override
-    public Client findByClientName(String name) {
-        return clientRepository.findByClientName(name);
-    }
-
-    @Override
-    public void save(Client client) {
-        clientRepository.save(client);
-    }
 }
