@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Пользователь</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Подробности о Пользователе</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Id Пользователя:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${user.id}">Id Пользователя</p></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Логин:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${user.username}">Логин</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ФИО пользователя:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${user.name}">ФИО</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

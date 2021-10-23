@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Пользователи</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(users)}">
+        <h2>Список Пользователей</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Логин</th>
+                <th>ФИО</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"><a href="/user/${user.id}">Id</a></td>
+                <td th:text="${user.username}">Логин</td>
+                <td th:text="${user.name}">ФИО</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/user/' + user.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/user/delete/' + user.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -9,6 +9,8 @@ public class User extends AbstractDomainClass {
 
     private String username;
 
+    private String name;
+
     private String password;
     @Transient
     private String confirmedPassword;
@@ -73,5 +75,13 @@ public class User extends AbstractDomainClass {
 
     public void setConfirmedPassword(String confirmedPassword) {
         this.confirmedPassword = confirmedPassword;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

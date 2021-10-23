@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Пользователи</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Информация о Пользователе</h2>
+    <div>
+        <form class="form-horizontal" th:object="${user}" th:action="@{/user}" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Логин:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{username}"/>
+                    <span class="has-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ФИО:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                    <span class="has-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Пароль:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" th:field="*{password}"/>
+                    <span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Подтвердите пароль:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" th:field="*{confirmedPassword}"/>
+                    <span class="has-error" th:if="${#fields.hasErrors('confirmedPassword')}" th:errors="*{confirmedPassword}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Ввод</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

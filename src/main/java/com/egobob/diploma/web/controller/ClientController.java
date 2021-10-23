@@ -49,7 +49,7 @@ public class ClientController {
     @RequestMapping("client/delete/{id}")
     public String delete(@PathVariable Long id){
         clientService.deleteClient(id);
-        return "redirect:/products";
+        return "redirect:/clients";
     }
 
 }

@@ -42,7 +42,7 @@
                                     <li><a href="#" th:href="@{/client/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         Добавить Клиента</a></li>
                                     <li><a href="#" th:href="@{/users}">Пользователи</a></li>
-                                    <li><a href="#" th:href="@{/users/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
+                                    <li><a href="#" th:href="@{/user/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         Создать Пользователя</a></li>
                                     <li sec:authorize="isAuthenticated()">
                                         <form id="logoutForm" method="POST" th:action="@{/logout}">
