@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.File;
 import java.util.Collection;
 
 @Entity
@@ -33,6 +31,6 @@ public class Document extends AbstractDomainClass {
     @OneToMany(mappedBy = "document")
     private Collection<DocumentNote> notes;
 
-    // TODO: add file attachment
+    private File file;
 
 }
