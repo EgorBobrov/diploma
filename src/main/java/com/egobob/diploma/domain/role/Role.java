@@ -2,10 +2,7 @@ package com.egobob.diploma.domain.role;
 
 import com.egobob.diploma.domain.AbstractDomainClass;
 import com.egobob.diploma.domain.user.User;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,9 +11,11 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString(includeFieldNames = false, onlyExplicitlyIncluded = true)
 @Table(name = "role")
 public class Role extends AbstractDomainClass {
 
+    @ToString.Include
     private String name;
 
     @ManyToMany(mappedBy = "roles")

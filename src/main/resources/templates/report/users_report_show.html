@@ -1,73 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head lang="en">
 
-    <title>Документ</title>
+    <title>Отчёт о Пользователях системы</title>
 
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(users)}">
+        <h2>Отчёт о Пользователях системы</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>ФИО пользователя</th>
+                <th>Роли пользователя</th>
+                <th>Дата регистрации пользователя</th>
+                <th>Дата последнего обновления профиля</th>
+                <th>Логин пользователя</th>
+                <th>Активный профиль</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}">ФИО</td>
+                <td th:text="${user.roles}">Роли</td>
+                <td th:text="${user.dateCreated}">Дата регистрации</td>
+                <td th:text="${user.lastUpdated}">Дата последнего обновления</td>
+                <td th:text="${user.username}">Логин</td>
+                <td th:text="${user.enabled}">Активный профиль</td>
+            </tr>
+        </table>
 
-    <h2>Подробности о Документе</h2>
-    <div>
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Id Документа:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.id}">Id Документа</p></div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Тип Документа:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.type.name}">Тип Документа</p></div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Наименование:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.title}">Наименование</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Описание:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.description}">Описание</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Статус:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.documentStatus.value}">Статус</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Проект:</label>
-                <div class="col-sm-10">
-                        <a th:href="${'/project/' + document.project.id}">
-                            <p class="form-control-static" th:text="${document.project.name}"></p>
-                        </a>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">File:</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${document.file}">File</p>
-                </div>
-            </div>
-            <div th:if="${not #lists.isEmpty(document.notes)}" class="form-group" >
-                <label class="col-sm-2 control-label">Комментарии:</label>
-                <div class="col-sm-10">
-                    <a th:href="${'/notes/' + document.id}">Комментарии</a>
-                </div>
-            </div>
-            <div class="form-group" >
-                <label class="col-sm-2 control-label">Оставить комментарий:</label>
-                <div class="col-sm-10">
-                    <a th:href="${'/note/new/' + document.id}">Оставить комментарий</a>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
