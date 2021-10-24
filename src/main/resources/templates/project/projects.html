@@ -27,7 +27,11 @@
                 <td th:text="${project.name}">Название</td>
                 <td th:text="${project.description}">Описание</td>
                 <td th:text="${project.projectStatus.value}">Статус</td>
-                <td th:text="${project.client.clientName}"><a th:href="${'/client/' + project.client.id}">Клиент</a></td>
+                <td>
+                    <a th:href="${'/client/' + project.client.id}">
+                        <p class="form-control-static" th:text="${project.client.clientName}"></p>
+                    </a>
+                </td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/project/' + project.id}">Просмотр</a></td>
                 <td sec:authorize="hasAuthority('ROLE_ADMIN')">

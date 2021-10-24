@@ -31,7 +31,9 @@
                 <td th:text="${document.documentStatus.value}">Статус</td>
                 <td th:text="${document.description}">Описание</td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
-                    <a th:href="${'/project/' + document.project.id}">Проект</a></td>
+                    <a th:href="${'/project/' + document.project.id}">
+                        <p class="form-control-static" th:text="${document.project.name}"></p>
+                    </a></td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/notes/' + document.id}">Комментарии</a></td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
