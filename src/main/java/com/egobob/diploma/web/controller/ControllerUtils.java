@@ -1,5 +1,10 @@
 package com.egobob.diploma.web.controller;
 
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 final class ControllerUtils {
 
     public static final String USER_FOLDER = "user";
@@ -26,6 +31,11 @@ final class ControllerUtils {
     public static final String DOCUMENT_TYPES_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctypes");
     public static final String DOCUMENT_TYPE_FORM_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctype_form");
     public static final String DOCUMENT_TYPE_SHOW_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctype_show");
+
+    public static final String NOTE_FOLDER = "note";
+    public static final String NOTES_VIEW = resolvePath(NOTE_FOLDER, "notes");
+    public static final String NOTE_FORM_VIEW = resolvePath(NOTE_FOLDER, "note_form");
+    public static final String NOTE_SHOW_VIEW = resolvePath(NOTE_FOLDER, "note_show");
 
 
     private static String resolvePath(String folder, String viewName) {

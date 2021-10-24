@@ -22,7 +22,5 @@ public class DocumentNote extends AbstractDomainClass {
 
     private String text;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", nullable = false)
-    private User author;
+    private String author;
 }

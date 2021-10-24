@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Комментарии</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(notes)}">
+        <h2>Комментарии к Документу</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Текст комментария</th>
+                <th>Документ</th>
+                <th>Автор</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
+            </tr>
+            <tr th:each="note : ${notes}">
+                <td th:text="${note.id}"><a href="/note/${note.id}">Id</a></td>
+                <td th:text="${note.text}">Текст</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/document/' + note.document.id}">
+                        <p class="form-control-static" th:text="${note.document.title}"></p>
+                    </a></td>
+                <td th:text="${note.author}">Автор</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/note/' + note.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/note/delete/' + note.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
