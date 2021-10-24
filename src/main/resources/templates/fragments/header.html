@@ -53,6 +53,7 @@
                                     <li><a href="#" th:href="@{/doctypes}">Типы Документов</a></li>
                                     <li><a href="#" th:href="@{/doctype/new}" sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         Создать Тип Документа</a></li>
+                                    <li><a href="#" th:href="@{/reports}">Генерация Отчётности</a></li>
                                     <li sec:authorize="isAuthenticated()">
                                         <form id="logoutForm" method="POST" th:action="@{/logout}">
                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

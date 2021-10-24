@@ -37,6 +37,16 @@ final class ControllerUtils {
     public static final String NOTE_FORM_VIEW = resolvePath(NOTE_FOLDER, "note_form");
     public static final String NOTE_SHOW_VIEW = resolvePath(NOTE_FOLDER, "note_show");
 
+    public static final String REPORT_FOLDER = "report";
+    public static final String REPORTS_VIEW = resolvePath(REPORT_FOLDER, "reports");
+    public static final String USERS_REPORT_FORM_VIEW = resolvePath(REPORT_FOLDER, "users_report_form");
+    public static final String USERS_REPORT_SHOW_VIEW = resolvePath(REPORT_FOLDER, "users_report_show");
+    public static final String PROJECT_DOCS_REPORT_FORM_VIEW = resolvePath(REPORT_FOLDER, "project_docs_report_form");
+    public static final String PROJECT_DOCS_REPORT_SHOW_VIEW = resolvePath(REPORT_FOLDER, "project_docs_report_show");
+    public static final String DOCUMENT_REPORT_FORM_VIEW = resolvePath(REPORT_FOLDER, "document_report_form");
+    public static final String DOCUMENT_REPORT_SHOW_VIEW = resolvePath(REPORT_FOLDER, "document_report_show");
+    public static final String CLIENT_PROJECTS_REPORT_FORM_VIEW = resolvePath(REPORT_FOLDER, "client_projects_report_form");
+    public static final String CLIENT_PROJECTS_REPORT_SHOW_VIEW = resolvePath(REPORT_FOLDER, "client_projects_report_show");
 
     private static String resolvePath(String folder, String viewName) {
         return folder + "/" + viewName;
