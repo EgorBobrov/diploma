@@ -17,6 +17,11 @@ final class ControllerUtils {
     public static final String PROJECT_FORM_VIEW = resolvePath(PROJECT_FOLDER, "project_form");
     public static final String PROJECT_SHOW_VIEW = resolvePath(PROJECT_FOLDER, "project_show");
 
+    public static final String DOCUMENT_FOLDER = "document";
+    public static final String DOCUMENTS_VIEW = resolvePath(DOCUMENT_FOLDER, "documents");
+    public static final String DOCUMENT_FORM_VIEW = resolvePath(DOCUMENT_FOLDER, "document_form");
+    public static final String DOCUMENT_SHOW_VIEW = resolvePath(DOCUMENT_FOLDER, "document_show");
+
 
     private static String resolvePath(String folder, String viewName) {
         return folder + "/" + viewName;

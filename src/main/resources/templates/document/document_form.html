@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Документ</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Информация о Документе</h2>
+    <div th:if="${not #lists.isEmpty(types)}">
+    <div>
+        <form class="form-horizontal" th:object="${document}" th:action="@{/document}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{version}"/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Наименование:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{title}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="type">Тип документа:</label>
+                <select id="type" th:field="*{type}">
+                    <option th:each="type : ${types}"
+                            th:value="${type.id}" th:text="${type.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Описание:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{description}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="status">Статус:</label>
+                <select id="status" th:field="*{documentStatus}">
+                    <option th:each="status : ${T(com.egobob.diploma.domain.document.DocumentStatus).values()}"
+                            th:value="${status}" th:text="${status.value}"
+                            th:selected="${status==CREATED}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="project">Проект:</label>
+                <select id="project" th:field="*{project}">
+                    <option th:each="project : ${projects}"
+                            th:value="${project.id}" th:text="${project.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-default">Ввод</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div th:if="${#lists.isEmpty(types)}">
+        <h3>Невозможно создать документ, если не существует ни одного типа документа.</h3>
+    </div>
+</div>
+
+</body>
+</html>

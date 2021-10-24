@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Документ</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+    <h2>Подробности о Документе</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Id Документа:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.id}">Id Документа</p></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Тип Документа:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.type.name}">Тип Документа</p></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Наименование:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.title}">Наименование</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Описание:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.description}">Описание</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Статус:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.documentStatus.value}">Статус</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Проект:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.project.name}">
+                        <a th:href="${'/project/' + document.project.id}">Проект</a></p>
+                </div>
+            </div>
+            <div th:if="${not #lists.isEmpty(document.notes)}" class="form-group" >
+                <label class="col-sm-2 control-label">Комментарии:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${document.notes}">Комментарии</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

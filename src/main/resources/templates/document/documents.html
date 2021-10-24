@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Документы</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(documents)}">
+        <h2>Список Документов</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Тип документа</th>
+                <th>Наименование</th>
+                <th>Статус</th>
+                <th>Описание</th>
+                <th>Проект</th>
+                <th>Комментарии</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Редактировать</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
+            </tr>
+            <tr th:each="document : ${documents}">
+                <td th:text="${document.id}"><a href="/document/${document.id}">Id</a></td>
+                <td th:text="${document.type.name}">Тип документа</td>
+                <td th:text="${document.title}">Наименование</td>
+                <td th:text="${document.status.value}">Статус</td>
+                <td th:text="${document.description}">Описание</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/project/' + document.project.id}">Проект</a></td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/notes/' + document.id}">Комментарии</a></td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/document/' + document.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/document/edit/' + document.id}">Редактирование</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/document/delete/' + document.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
