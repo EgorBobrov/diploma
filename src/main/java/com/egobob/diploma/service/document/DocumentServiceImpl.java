@@ -32,4 +32,9 @@ public class DocumentServiceImpl implements DocumentService {
     public void delete(Long id) {
         documentRepository.deleteById(id);
     }
+
+    @Override
+    public List<?> listAllByDoctypeId(Long typeId) {
+        return documentRepository.findByTypeId(typeId);
+    }
 }

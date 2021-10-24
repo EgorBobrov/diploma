@@ -22,7 +22,7 @@ public class Document extends AbstractDomainClass {
     private DocumentStatus documentStatus;
 
     @ManyToOne
-    @JoinColumn(name = "document_type_id", nullable = false)
+    @JoinColumn(name = "type_id", nullable = false)
     private DocumentType type;
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)

@@ -28,7 +28,7 @@
                 <td th:text="${document.id}"><a href="/document/${document.id}">Id</a></td>
                 <td th:text="${document.type.name}">Тип документа</td>
                 <td th:text="${document.title}">Наименование</td>
-                <td th:text="${document.status.value}">Статус</td>
+                <td th:text="${document.documentStatus.value}">Статус</td>
                 <td th:text="${document.description}">Описание</td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/project/' + document.project.id}">Проект</a></td>

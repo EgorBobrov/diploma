@@ -22,6 +22,11 @@ final class ControllerUtils {
     public static final String DOCUMENT_FORM_VIEW = resolvePath(DOCUMENT_FOLDER, "document_form");
     public static final String DOCUMENT_SHOW_VIEW = resolvePath(DOCUMENT_FOLDER, "document_show");
 
+    public static final String DOCUMENT_TYPE_FOLDER = "doctype";
+    public static final String DOCUMENT_TYPES_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctypes");
+    public static final String DOCUMENT_TYPE_FORM_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctype_form");
+    public static final String DOCUMENT_TYPE_SHOW_VIEW = resolvePath(DOCUMENT_TYPE_FOLDER, "doctype_show");
+
 
     private static String resolvePath(String folder, String viewName) {
         return folder + "/" + viewName;

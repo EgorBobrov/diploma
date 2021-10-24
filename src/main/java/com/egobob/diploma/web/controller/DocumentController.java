@@ -41,7 +41,7 @@ public class DocumentController implements BaseEntityController<Document> {
     @Override
     @RequestMapping("document/{id}")
     public String showEntity(@PathVariable Long id, Model model) {
-        model.addAttribute("project", documentService.getById(id));
+        model.addAttribute("document", documentService.getById(id));
         return DOCUMENT_SHOW_VIEW;
     }
 
@@ -49,6 +49,12 @@ public class DocumentController implements BaseEntityController<Document> {
     @GetMapping(value = "/documents")
     public String list(Model model) {
         model.addAttribute("documents", documentService.listAll());
+        return DOCUMENTS_VIEW;
+    }
+
+    @GetMapping(value = "/documents/{doctypeId}")
+    public String listProjectsByClientId(@PathVariable Long doctypeId, Model model) {
+        model.addAttribute("documents", documentService.listAllByDoctypeId(doctypeId));
         return DOCUMENTS_VIEW;
     }
 

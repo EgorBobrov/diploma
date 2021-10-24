@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head lang="en">
+
+    <title>Типы Документов</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(doctypes)}">
+        <h2>Список Типов Документов</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Проекты</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Редактировать</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
+            </tr>
+            <tr th:each="doctype : ${doctypes}">
+                <td th:text="${doctype.id}"><a href="/doctype/${doctype.id}">Id</a></td>
+                <td th:text="${doctype.name}">Название</td>
+                <td th:text="${doctype.description}">Описание</td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/documents/' + doctype.id}">Документы</a></td>
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                    <a th:href="${'/doctype/' + doctype.id}">Просмотр</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/doctype/edit/' + doctype.id}">Редактирование</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a th:href="${'/doctype/delete/' + doctype.id}">Удаление</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
