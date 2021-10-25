@@ -48,6 +48,10 @@ final class ControllerUtils {
     public static final String CLIENT_PROJECTS_REPORT_FORM_VIEW = resolvePath(REPORT_FOLDER, "client_projects_report_form");
     public static final String CLIENT_PROJECTS_REPORT_SHOW_VIEW = resolvePath(REPORT_FOLDER, "client_projects_report_show");
 
+    public static final String SEARCH_FOLDER = "search";
+    public static final String SEARCH_PAGE = resolvePath(SEARCH_FOLDER, "search");
+    public static final String SEARCH_RESULT = resolvePath(SEARCH_FOLDER, "search_result");
+
     private static String resolvePath(String folder, String viewName) {
         return folder + "/" + viewName;
     }

@@ -42,4 +42,9 @@ public class DocumentServiceImpl implements DocumentService {
     public List<?> listAllByProjectId(Long projectId) {
         return documentRepository.findByProjectId(projectId);
     }
+
+    @Override
+    public List<?> findByTitle(String queryText) {
+        return documentRepository.findByTitle(queryText);
+    }
 }

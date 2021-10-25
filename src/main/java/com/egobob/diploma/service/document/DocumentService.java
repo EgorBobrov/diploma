@@ -9,4 +9,6 @@ public interface DocumentService extends BaseCrudService<Document> {
     List<?> listAllByDoctypeId(Long typeId);
 
     List<?> listAllByProjectId(Long projectId);
+
+    List<?> findByTitle(String queryText);
 }
