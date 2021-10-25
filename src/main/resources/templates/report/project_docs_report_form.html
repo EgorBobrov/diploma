@@ -16,7 +16,7 @@
         <form class="form-horizontal" th:object="${input}" th:action="@{/project_docs_report_form}" method="post">
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="project">Проект:</label>
-                <select id="project" th:field="*{projectId}">
+                <select id="project" th:field="*{wrappedId}">
                     <option th:each="project : ${projects}"
                             th:value="${project.id}" th:text="${project.name}">
                     </option>
@@ -29,7 +29,7 @@
     </div>
     </div>
     <div th:if="${#lists.isEmpty(projects)}">
-        <h3>Невозможно создать документ, если не существует ни одного типа документа.</h3>
+        <h3>Невозможно создать отчёт, если не существует ни одного проекта.</h3>
     </div>
 </div>
 
