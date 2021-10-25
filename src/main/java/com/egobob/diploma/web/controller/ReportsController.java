@@ -1,5 +1,6 @@
 package com.egobob.diploma.web.controller;
 
+import com.egobob.diploma.service.client.ClientService;
 import com.egobob.diploma.service.document.DocumentNoteService;
 import com.egobob.diploma.service.document.DocumentService;
 import com.egobob.diploma.service.project.ProjectService;
@@ -23,6 +24,7 @@ public class ReportsController {
     private final ProjectService projectService;
     private final DocumentService documentService;
     private final DocumentNoteService noteService;
+    private final ClientService clientService;
 
     @RequestMapping(value = "reports")
     public String listReports() {
@@ -71,6 +73,25 @@ public class ReportsController {
         model.addAttribute("document", documentService.getById(documentId));
         model.addAttribute("notes", noteService.listAllByDocumentId(documentId));
         return DOCUMENT_REPORT_SHOW_VIEW;
+    }
+
+    @RequestMapping("client_projects_report_form")
+    public String clientProjectsReport(Model model) {
+        model.addAttribute("clients", clientService.listAll());
+        model.addAttribute("input", new ReportInputWrapper());
+        return CLIENT_PROJECTS_REPORT_FORM_VIEW;
+    }
+
+    @PostMapping("client_projects_report_form")
+    public String clientProjectsReportCreate(ReportInputWrapper report) {
+        return "redirect:/client_projects_report_show/" + report.wrappedId;
+    }
+
+    @RequestMapping("client_projects_report_show/{clientId}")
+    public String clientProjectsReport(@PathVariable Long clientId, Model model) {
+        model.addAttribute("client", clientService.getById(clientId));
+        model.addAttribute("projects", projectService.listAllByClientId(clientId));
+        return CLIENT_PROJECTS_REPORT_SHOW_VIEW;
     }
 
     @Getter
