@@ -37,4 +37,9 @@ public class DocumentServiceImpl implements DocumentService {
     public List<?> listAllByDoctypeId(Long typeId) {
         return documentRepository.findByTypeId(typeId);
     }
+
+    @Override
+    public List<?> listAllByProjectId(Long projectId) {
+        return documentRepository.findByProjectId(projectId);
+    }
 }
