@@ -34,7 +34,9 @@
                     <a th:href="${'/note/delete/' + note.id}">Удаление</a></td>
             </tr>
         </table>
-
+    </div>
+    <div th:if="${#lists.isEmpty(notes)}">
+        <h3>Комментариев нет.</h3>
     </div>
 </div>
 
