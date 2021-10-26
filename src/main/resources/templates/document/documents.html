@@ -19,10 +19,10 @@
                 <th>Статус</th>
                 <th>Описание</th>
                 <th>Проект</th>
-                <th>File</th>
+                <th>Файл</th>
                 <th>Комментарии</th>
                 <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Просмотр</th>
-                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Редактировать</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">Редактировать</th>
                 <th sec:authorize="hasAuthority('ROLE_ADMIN')">Удалить</th>
             </tr>
             <tr th:each="document : ${documents}">
@@ -35,12 +35,12 @@
                     <a th:href="${'/project/' + document.project.id}">
                         <p class="form-control-static" th:text="${document.project.name}"></p>
                     </a></td>
-                <td th:text="${document.file}">File</td>
+                <td th:text="${document.file}">Файл</td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/notes/' + document.id}">Комментарии</a></td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/document/' + document.id}">Просмотр</a></td>
-                <td sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a th:href="${'/document/edit/' + document.id}">Редактирование</a></td>
                 <td sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <a th:href="${'/document/delete/' + document.id}">Удаление</a></td>
