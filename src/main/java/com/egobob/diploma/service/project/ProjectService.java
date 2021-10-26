@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ProjectService extends BaseCrudService<Project> {
     List<?> listAllByClientId(Long clientId);
+
+    Project getByName(String name);
 }

@@ -37,4 +37,9 @@ public class ProjectServiceImpl implements ProjectService {
     public List<?> listAllByClientId(Long clientId) {
         return projectRepository.findByClientId(clientId);
     }
+
+    @Override
+    public Project getByName(String name) {
+        return projectRepository.findByName(name);
+    }
 }

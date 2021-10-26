@@ -29,6 +29,5 @@ public class ClientValidator implements Validator {
         if (clientService.getByClientName(client.getClientName()) != null) {
             errors.rejectValue("clientName", "Duplicate.clientForm.clientName");
         }
-
     }
 }
