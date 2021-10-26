@@ -12,13 +12,13 @@
         <h2>Выберите вид отчёта</h2>
         <table class="table table-striped">
             <tr>
-                <th>Список пользователей</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Список пользователей</th>
                 <th>Список документов по проекту</th>
                 <th>Документ и комментарии к нему</th>
                 <th>Список проектов для клиента</th>
             </tr>
             <tr>
-                <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                     <a href="/users_report_show/">Сгенерировать список пользователей</a></td>
                 <td sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                     <a href="/project_docs_report_form/">Сгенерировать список документов по проекту</a></td>
