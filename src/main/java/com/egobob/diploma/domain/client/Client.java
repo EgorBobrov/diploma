@@ -5,6 +5,7 @@ import com.egobob.diploma.domain.project.Project;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,8 +17,10 @@ import java.util.Collection;
 @NoArgsConstructor
 public class Client extends AbstractDomainClass {
 
+    @NotNull
     private String clientName;
     private String clientWebsiteUrl;
+    @Column(columnDefinition = "text")
     private String clientDescription;
 
     @OneToMany(mappedBy = "client")

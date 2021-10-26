@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
@@ -15,7 +16,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Project extends AbstractDomainClass {
 
+    @NotNull
     private String name;
+    @Column(columnDefinition = "text")
     private String description;
 
     @ManyToOne

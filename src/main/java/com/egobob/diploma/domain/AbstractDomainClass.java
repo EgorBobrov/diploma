@@ -19,6 +19,7 @@ public class AbstractDomainClass implements DomainObject {
     Long id;
 
     @Version
+    @Column(columnDefinition = "int8 default 0")
     private Long version;
 
     private Date dateCreated;

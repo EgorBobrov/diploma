@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Set;
 
@@ -18,14 +19,18 @@ import java.util.Set;
 @NoArgsConstructor
 public class User extends AbstractDomainClass {
 
+    @NotNull
     private String username;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String password;
     @Transient
     private String confirmedPassword;
 
+    @NotNull
     private Boolean enabled = true;
 
     @ManyToMany(cascade=CascadeType.MERGE)

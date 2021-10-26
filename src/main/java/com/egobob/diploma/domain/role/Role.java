@@ -5,6 +5,7 @@ import com.egobob.diploma.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -16,6 +17,7 @@ import java.util.Set;
 public class Role extends AbstractDomainClass {
 
     @ToString.Include
+    @NotNull
     private String name;
 
     @ManyToMany(mappedBy = "roles")
